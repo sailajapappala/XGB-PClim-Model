@@ -136,13 +136,29 @@ main <- function() {
   prec_pred <- inv_boxcox(prec_pred_bc, lambda) - shift
   prec_pred <- pmax(prec_pred, 0)
   
-  # --- Assemble output ----------------------------------------------------
-  data$Predicted_Temperature   <- NA_real_
-  data$Predicted_Precipitation <- NA_real_
-  temp_pred <- round(temp_pred, 1)   # one decimal place
-  prec_pred <- round(prec_pred, 0)   # whole numbers
-  data$Predicted_Temperature[mask]   <- temp_pred
-  data$Predicted_Precipitation[mask] <- prec_pred
+  # --- Assemble output ---------------------------------------------------- 
+  temp_uncertainty <- 4.1   # example: ±1.8 °C
+  prec_uncertainty <- 317    # example: ±95 mm/year
+  temp_pred <- round(temp_pred, 1)
+  prec_pred <- round(prec_pred, 0)
+  
+  data$MAT_Best <- NA_real_
+  data$MAT_Min  <- NA_real_
+  data$MAT_Max  <- NA_real_
+
+  data$MAP_Best <- NA_real_
+  data$MAP_Min  <- NA_real_
+  data$MAP_Max  <- NA_real_
+
+# --- Fill predictions -------------------------------------------------
+
+  data$MAT_Best[mask] <- temp_pred
+  data$MAT_Min[mask]  <- round(temp_pred - temp_uncertainty, 1)
+  data$MAT_Max[mask]  <- round(temp_pred + temp_uncertainty, 1)
+
+  data$MAP_Best[mask] <- prec_pred
+  data$MAP_Min[mask]  <- round(pmax(prec_pred - prec_uncertainty, 0), 0)
+  data$MAP_Max[mask]  <- round(prec_pred + prec_uncertainty, 0)
   
   # --- Save ---------------------------------------------------------------
   output_dir <- dirname(paths$output)
