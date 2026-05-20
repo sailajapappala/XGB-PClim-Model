@@ -13,11 +13,11 @@
 # Recommended project structure:
 #
 # XGB-PClim/
-# ├── XGB-PClim.Rproj
-# ├── XGB-PClim_predict.R
-# ├── data/
-# ├── models/
-# └── results/
+# ├── R/
+# │   ├── XGB-PClim_predict.R
+# │   ├── models/
+# │   └── data/
+# ├── results/
 # ==========================================================
 
 # --- Dependencies --------------------------------------------------------
