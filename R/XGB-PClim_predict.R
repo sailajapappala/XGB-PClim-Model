@@ -22,7 +22,7 @@
 
 # --- Dependencies --------------------------------------------------------
 
-required_packages <- c("xgboost", "here")
+required_packages <- c("xgboost", "rstudioapi")
 
 for (pkg in required_packages) {
   if (!requireNamespace(pkg, quietly = TRUE)) {
@@ -31,7 +31,9 @@ for (pkg in required_packages) {
 }
 
 library(xgboost)
-library(here)
+library(rstudioapi)
+
+setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 
 # --- Configuration -------------------------------------------------------
 
@@ -43,15 +45,15 @@ OXIDE_COLUMNS <- c(
 # --- Default paths -------------------------------------------------------
 
 default_paths <- list(
-  data          = here("data", "input.csv"),
-  temp_model    = here("models", "temperature_xgb_model.json"),
-  temp_mean     = here("models", "temp_scaler_mean.csv"),
-  temp_scale    = here("models", "temp_scaler_scale.csv"),
-  prec_model    = here("models", "precipitation_xgb_model.json"),
-  prec_mean     = here("models", "precp_scaler_mean.csv"),
-  prec_scale    = here("models", "precp_scaler_scale.csv"),
-  prec_boxcox   = here("models", "precp_boxcox_parameters.csv"),
-  output        = here("results", "output_R.csv")
+  data          = "data/input.csv",
+  temp_model    = "models/temperature_xgb_model.json",
+  temp_mean     = "models/temp_scaler_mean.csv",
+  temp_scale    = "models/temp_scaler_scale.csv",
+  prec_model    = "models/precipitation_xgb_model.json",
+  prec_mean     = "models/precp_scaler_mean.csv",
+  prec_scale    = "models/precp_scaler_scale.csv",
+  prec_boxcox   = "models/precp_boxcox_parameters.csv",
+  output        = "results/output_R.csv"
 )
 
 # --- Parse command-line arguments -----------------------------------------
@@ -85,7 +87,7 @@ inv_boxcox <- function(y, lambda) {
 main <- function() {
   paths <- parse_args()
   # Print detected project root
-  cat("Project root:", here(), "\n")
+  cat("Working directory:", getwd(), "\n")
   # Validate inputs
   required <- c("data", "temp_model", "temp_mean", "temp_scale",
                 "prec_model", "prec_mean", "prec_scale", "prec_boxcox")
