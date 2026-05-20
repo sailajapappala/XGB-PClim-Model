@@ -9,7 +9,7 @@ Both a **Python** and an **R** implementation are provided. They produce equival
 ```
 Git/
 ├── Python/
-│   ├── ppm2\_predict.py          # Main prediction script
+│   ├── XGB-PClim\_predict.py          # Main prediction script
 │   ├── requirements.txt         # Python dependencies
 │   ├── data/
 │   │   └── input.csv   # Input oxide geochemistry
@@ -17,7 +17,7 @@ Git/
 │       ├── precipitation\_model\_artifacts.joblib
 │       └── temperature\_model\_artifacts.joblib
 ├── R/
-│   ├── ppm2\_predict.R           # Main prediction script
+│   ├── XGB-PClim\_predict.R           # Main prediction script
 │   ├── data/
 │   │   └── input.csv   # Input oxide geochemistry
 │   └── models/
@@ -41,17 +41,17 @@ Git/
 ```bash
 cd Python
 pip install -r requirements.txt
-python ppm2\_predict.py
+python XGB-PClim\_predict.py
 # or with custom paths:
-python ppm2\_predict.py --data path/to/data.csv --output results.csv
+python XGB-PClim\_predict.py --data path/to/data.csv --output results.csv
 ```
 
 ### R
 
 ```r
-source("R/ppm2\_predict.R")
+source("R/XGB-PClim\_predict.R")
 # or from the command line:
-Rscript R/ppm2\_predict.R
+Rscript R/XGB-PClim\_predict.R
 ```
 
 ## Input Format
@@ -105,7 +105,7 @@ This project is released under the MIT License. See [LICENSE](LICENSE) for detai
 
 ## Citation
 
-If you use PPM2 in your research, please cite:
+If you use XGB-PClim model in your research, please cite:
 
 > \*Pappala, V.S., Stinchcomb, G.E., Lukens, W.E., Nordt, L.C., 2026. Machine Learning Climate Prediction from Modern Soil Geochemistry: Implications for Paleosols. American Journal of Science (in submission).\*
 
