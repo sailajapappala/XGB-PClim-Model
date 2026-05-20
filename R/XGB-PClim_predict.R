@@ -139,9 +139,10 @@ main <- function() {
   # --- Assemble output ----------------------------------------------------
   data$Predicted_Temperature   <- NA_real_
   data$Predicted_Precipitation <- NA_real_
+  temp_pred <- round(temp_pred, 1)   # one decimal place
+  prec_pred <- round(prec_pred, 0)   # whole numbers
   data$Predicted_Temperature[mask]   <- temp_pred
   data$Predicted_Precipitation[mask] <- prec_pred
-  
   
   # --- Save ---------------------------------------------------------------
   output_dir <- dirname(paths$output)
