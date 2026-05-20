@@ -18,7 +18,6 @@ The Python version can be run using:
 
 * JupyterLab
 * Jupyter Notebook
-* VS Code
 * Command Prompt or Terminal
 
 ### Installing Python Requirements
@@ -116,9 +115,6 @@ Example input file:
 ```text
 data/input.csv
 ```
-
-You can also replace the contents of the provided `input.csv` file with your own data.
-
 ---
 
 # Running the R Version
@@ -204,7 +200,7 @@ results/output_R.csv
 
 ### Step 1
 
-Open **JupyterLab**, **Jupyter Notebook**, or **VS Code**
+Open **JupyterLab**, or **Jupyter Notebook**
 
 ### Step 2
 
