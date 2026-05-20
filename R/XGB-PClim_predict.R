@@ -53,7 +53,7 @@ default_paths <- list(
   prec_mean     = "models/precp_scaler_mean.csv",
   prec_scale    = "models/precp_scaler_scale.csv",
   prec_boxcox   = "models/precp_boxcox_parameters.csv",
-  output        = "results/output_R.csv"
+  output        = "../results/output_R.csv"
 )
 
 # --- Parse command-line arguments -----------------------------------------
