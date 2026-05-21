@@ -65,8 +65,8 @@ DEFAULT_OUTPUT = (
 # ==========================================================
 # Model uncertainties
 # ==========================================================
-MAT_UNCERTAINTY = 2.0      # °C
-MAP_UNCERTAINTY = 180.0    # mm/year
+MAT_UNCERTAINTY = 4.1      # °C
+MAP_UNCERTAINTY = 317    # mm/year
 
 
 # ==========================================================
