@@ -111,6 +111,7 @@ Explanation:
 * `Rscript XGB-PClim_predict.R` runs the prediction script
 
 If Rscript is not recongnized, use:
+
 "C:\Program Files\R\R-4.4.1\bin\Rscript.exe" XGB-PClim_predict.R
 
 The script automatically saves predictions to:
@@ -126,6 +127,7 @@ Navigate to the XGB-PClim-Model-Main folder and open Python folder
 Create a new notebook in that folder
 ### Step 4
 In a cell, add:
+
 %run XGB-PClim_predict.py
 ### Step 5
 Run the cell
