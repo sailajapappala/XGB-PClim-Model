@@ -8,7 +8,7 @@ This guide explains how to test the XGB-PClim models, prepare your own data, and
 
 # 1. Before You Begin
 
-XGB-PClim includes both Python and R versions. You only need to use one version.
+XGB-PClim includes both Python and R versions. **You only need one version:** Python **or** R (not both).
 
 ---
 
@@ -120,45 +120,30 @@ data/input.csv
 # Running the R Version
 
 ## Option 1 — Run Directly in RStudio (Recommended for Beginners)
-
 ### Step 1
-
-Open **RStudio**
-
+Open the main **XGB-PClim-Model-main** folder and now open R folder
 ### Step 2
-
-Open the file:
-
+Open the following file in **RStudio**:
 ```text
-R/XGB-PClim_predict.R
+XGB-PClim_predict.R
 ```
-
 ### Step 3
-
 Click the **Run** button at the top of the script editor.
-
 ### Step 4
-
 The script will automatically:
-
 * read `data/input.csv`
 * save prediction results to:
-
 ```text
 results/output_R.csv
 ```
-
 If successful, you should see:
-
 ```text
 Predictions saved to: results/output_R.csv
-Rows predicted: 25 / 25
+Rows predicted: 41 / 41
 ```
-
 This means the model ran successfully.
 
 ---
-
 ## Option 2 — Run from the Terminal or Command Prompt
 
 ### Step 1
@@ -229,7 +214,7 @@ If successful, you should see:
 
 ```text
 Predictions saved to: results/output.csv
-Rows predicted: 25 / 25
+Rows predicted: 41 / 41
 ```
 
 ---
@@ -329,10 +314,14 @@ The file will contain:
 * predicted temperature values
 * predicted precipitation values
 
-| Column                  | Unit    | Meaning                                   |
-| ----------------------- | ------- | ----------------------------------------- |
-| Predicted_Temperature   | °C      | Estimated mean annual temperature (MAT)   |
-| Predicted_Precipitation | mm/year | Estimated mean annual precipitation (MAP) |
+| Column                  | Unit    | Meaning                                           |
+| ----------------------- | ------- | -----------------------------------------------   |
+| MAT_Best                | °C      | Estimated best mean annual temperature (MAT)      |
+| MAT_Min                 | °C      | Estimated minimum mean annual temperature (MAT)   |
+| MAT_Max                 | °C      | Estimated maximum mean annual temperature (MAT)   |
+| MAP_Best                | mm/year | Estimated best mean annual precipitation (MAP)    |
+| MAP_Min                 | mm/year | Estimated minimum mean annual precipitation (MAP) |
+| MAP_Max                 | mm/year | Estimated maximum mean annual precipitation (MAP) |
 
 ### Notes
 
@@ -395,4 +384,3 @@ install.packages("xgboost")
 
 * Check your data carefully before running predictions
 * The Python and R versions should produce nearly identical results
-* For best results, use high-quality oxide measurements
