@@ -5,7 +5,7 @@ XGBoost-based prediction of **mean annual temperature (MAT)** and **mean annual 
 Both a **Python** and an **R** implementation are provided. They produce equivalent results from the same trained models and input data.
 
 ## Repository Structure
-
+Folder layout (do not move or rename these folders)
 ```
 Git/
 ├── Python/
@@ -30,6 +30,7 @@ Git/
 │       └── temp\_scaler\_scale.csv
 ├── results/                     # Generated predictions (gitignored)
 ├── README.md
+├── USAGE_GUIDE.md
 ├── LICENSE
 └── .gitignore
 ```
@@ -75,10 +76,14 @@ Rows with any missing oxide value are skipped during prediction.
 
 ## Output
 
-The script appends two columns to the input data:
+The script appends six columns to the input data:
 
-* **Predicted\_Temperature** -- estimated MAT in degrees Celsius
-* **Predicted\_Precipitation** -- estimated MAP in mm/year
+* **MAT\_Best** -- estimated MAT in degrees Celsius
+* **MAT\_Min** -- estimated MAT in degrees Celsius
+* **MAT\_Max** -- estimated MAT in degrees Celsius
+* **MAP\_Best** -- estimated MAP in mm/year
+* **MAP\_Min** -- estimated MAP in mm/year
+* **MAP\_Max** -- estimated MAP in mm/year
 
 ## Method Summary
 
