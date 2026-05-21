@@ -9,7 +9,7 @@ Both a **Python** and an **R** implementation are provided. They produce equival
 ## Repository Structure
 Folder layout (do not move or rename these folders)
 ```
-XGB-PClim-Model/
+XGB-PClim-Model-main/
 ├── Python/
 │   ├── XGB-PClim_predict.py          # Main prediction script
 │   ├── requirements.txt         # Python dependencies
