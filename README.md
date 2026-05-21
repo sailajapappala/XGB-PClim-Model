@@ -82,12 +82,12 @@ Rows with any missing oxide value are skipped during prediction.
 
 The script appends six columns to the input data:
 
-* **MAT\_Best** -- estimated MAT in degrees Celsius
-* **MAT\_Min** -- estimated MAT in degrees Celsius
-* **MAT\_Max** -- estimated MAT in degrees Celsius
-* **MAP\_Best** -- estimated MAP in mm/year
-* **MAP\_Min** -- estimated MAP in mm/year
-* **MAP\_Max** -- estimated MAP in mm/year
+* **MAT\_Best** -- estimated best MAT in degrees Celsius
+* **MAT\_Min** -- estimated minimum MAT in degrees Celsius
+* **MAT\_Max** -- estimated maximum MAT in degrees Celsius
+* **MAP\_Best** -- estimated best MAP in mm/year
+* **MAP\_Min** -- estimated minimum MAP in mm/year
+* **MAP\_Max** -- estimated maximum MAP in mm/year
 
 ## Method Summary
 
