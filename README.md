@@ -15,14 +15,14 @@ XGB-PClim-Model-main/
 │   ├── requirements.txt         # Python dependencies
 │   ├── data/
 │   │   └── input.csv   # Input oxide geochemistry
-│   └── models/
+│   └── models/                   # Do not delete 
 │       ├── precipitation\_model\_artifacts.joblib
 │       └── temperature\_model\_artifacts.joblib
 ├── R/
 │   ├── XGB-PClim\_predict.R           # Main prediction script
 │   ├── data/
 │   │   └── input.csv   # Input oxide geochemistry
-│   └── models/
+│   └── models/                        # Do not delete 
 │       ├── precipitation\_xgb\_model.json
 │       ├── temperature\_xgb\_model.json
 │       ├── precp\_boxcox\_parameters.csv
