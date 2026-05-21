@@ -11,7 +11,7 @@ Folder layout (do not move or rename these folders)
 ```
 XGB-PClim-Model-main/
 ├── Python/
-│   ├── XGB-PClim_predict.py          # Main prediction script
+│   ├── XGB-PClim\_predict.py          # Main prediction script
 │   ├── requirements.txt         # Python dependencies
 │   ├── data/
 │   │   └── input.csv   # Input oxide geochemistry
@@ -19,7 +19,7 @@ XGB-PClim-Model-main/
 │       ├── precipitation\_model\_artifacts.joblib
 │       └── temperature\_model\_artifacts.joblib
 ├── R/
-│   ├── XGB-PClim_predict.R           # Main prediction script
+│   ├── XGB-PClim\_predict.R           # Main prediction script
 │   ├── data/
 │   │   └── input.csv   # Input oxide geochemistry
 │   └── models/
@@ -44,7 +44,7 @@ XGB-PClim-Model-main/
 ```bash
 cd Python
 pip install -r requirements.txt
-python XGB-PClim_predict.py
+python XGB-PClim\_predict.py
 If `python` fails, try `py -3` instead
 
 # or with custom paths:
@@ -54,9 +54,9 @@ python XGB-PClim\_predict.py --data path/to/data.csv --output results.csv
 ### R
 
 ```r
-source("R/XGB-PClim_predict.R")
+source("R/XGB-PClim\_predict.R")
 # or from the command line:
-Rscript R/XGB-PClim_predict.R
+Rscript R/XGB-PClim\_predict.R
 ```
 
 ## Input Format
