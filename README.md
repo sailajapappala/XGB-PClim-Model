@@ -4,12 +4,14 @@ XGBoost-based prediction of **mean annual temperature (MAT)** and **mean annual 
 
 Both a **Python** and an **R** implementation are provided. They produce equivalent results from the same trained models and input data.
 
+**New users:** start with [**USAGE_GUIDE.md**](USAGE_GUIDE.md) for step-by-step instructions. 
+
 ## Repository Structure
 Folder layout (do not move or rename these folders)
 ```
-Git/
+XGB-PClim-Model/
 ├── Python/
-│   ├── XGB-PClim\_predict.py          # Main prediction script
+│   ├── XGB-PClim_predict.py          # Main prediction script
 │   ├── requirements.txt         # Python dependencies
 │   ├── data/
 │   │   └── input.csv   # Input oxide geochemistry
@@ -17,7 +19,7 @@ Git/
 │       ├── precipitation\_model\_artifacts.joblib
 │       └── temperature\_model\_artifacts.joblib
 ├── R/
-│   ├── XGB-PClim\_predict.R           # Main prediction script
+│   ├── XGB-PClim_predict.R           # Main prediction script
 │   ├── data/
 │   │   └── input.csv   # Input oxide geochemistry
 │   └── models/
@@ -42,7 +44,9 @@ Git/
 ```bash
 cd Python
 pip install -r requirements.txt
-python XGB-PClim\_predict.py
+python XGB-PClim_predict.py
+If `python` fails, try `py -3` instead
+
 # or with custom paths:
 python XGB-PClim\_predict.py --data path/to/data.csv --output results.csv
 ```
@@ -50,9 +54,9 @@ python XGB-PClim\_predict.py --data path/to/data.csv --output results.csv
 ### R
 
 ```r
-source("R/XGB-PClim\_predict.R")
+source("R/XGB-PClim_predict.R")
 # or from the command line:
-Rscript R/XGB-PClim\_predict.R
+Rscript R/XGB-PClim_predict.R
 ```
 
 ## Input Format
