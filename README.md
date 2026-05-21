@@ -56,6 +56,7 @@ python XGB-PClim\_predict.py --data path/to/data.csv --output results.csv
 ```r
 source("R/XGB-PClim\_predict.R")
 # or from the command line:
+```bash
 Rscript R/XGB-PClim_predict.R
 ```
 
