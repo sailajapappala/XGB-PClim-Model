@@ -22,18 +22,24 @@
 
 # --- Dependencies --------------------------------------------------------
 
-required_packages <- c("xgboost", "rstudioapi")
+required_packages <- c("xgboost")
 
 for (pkg in required_packages) {
   if (!requireNamespace(pkg, quietly = TRUE)) {
     install.packages(pkg, repos = "https://cloud.r-project.org")
   }
 }
-
 library(xgboost)
-library(rstudioapi)
-
-setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
+# ---------------------------------------------------------
+# Set working directory to script location
+# ---------------------------------------------------------
+args <- commandArgs(trailingOnly = FALSE)
+script_path <- sub("--file=", "", args[grep("--file=", args)])
+if (length(script_path) > 0) {
+  setwd(dirname(normalizePath(script_path)))
+}
+cat("Working directory:\n")
+print(getwd())
 
 # --- Configuration -------------------------------------------------------
 
