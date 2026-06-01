@@ -172,24 +172,26 @@ Example format:
 | SITE_003  | 4.60 | 7.76 | 0.57 | 0.87 | 13.09 | 10.62 | 38.88 | 0.17 | 1.54 | 2.09 |
 
 ## Important Rules
-* Column names must match exactly, including capitalization (case-sensitive)
-* The order of columns does not matter
-* Additional columns such as Sample ID, location, or notes are allowed
-* Rows with missing oxide values will return blank (`NA`) predictions
-* Oxide values should be provided in weight percent (wt %) units
+
+* Required oxide column names must match exactly, including capitalization (case-sensitive).
+* Oxide values must be reported in weight percent (wt %).
+* The order of columns does not matter.
+* Additional columns (e.g., Sample ID, location, notes) are permitted and will be preserved in the output.
+* Rows containing missing values for any required oxide will return blank (`NA`) predictions.
+* The example data in `input.csv` are provided for demonstration purposes only and may be deleted or replaced with your own data.
+* Each row is treated as an independent sample and will receive its own MAT and MAP predictions.
+* There is no fixed limit on the number of samples that can be processed in a single run; the practical limit depends on available computer memory and processing resources.
 
 # 4. Running Predictions on Your Own Data
 ## Recommended Method for Beginners
-1. Open the provided input.csv file located in the data folder.
-2. Delete the example rows if desired and replace them with your own sample data.
-3. Keep the required oxide column names unchanged.
+1. Open `input.csv` in the `data` folder.
+2. Replace the example rows with your own sample data (or append additional samples).
+3. Ensure that the required oxide column names remain unchanged.
 4. Save the file.
 5. Run either the R or Python version of the script.
-6. Open output.csv (Python) or output_R.csv (R) in the results folder to view the predictions.
+6. Open `output.csv` (Python) or `output_R.csv` (R) in the `results` folder to view the predictions.
 
-Each row in the input file represents one sample and will receive its own MAT and MAP predictions.
-
-This is the easiest method because the scripts are already configured to automatically read `input.csv` and save results to the `results` folder.
+This is the simplest approach because the scripts are preconfigured to read `input.csv` from the `data` folder and automatically save prediction results to the `results` folder.
 
 ## Optional: Use Custom File Names
 Advanced users can specify custom input and output file names.
