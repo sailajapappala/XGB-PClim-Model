@@ -89,7 +89,7 @@ The script appends six columns to the input data:
 * **MAP\_Min** -- lower bound of the MAP prediction range, calculated as MAP_Best minus the model uncertainty in mm yr⁻¹
 * **MAP\_Max** -- lower bound of the MAP prediction range, calculated as MAP_Best minus the model uncertainty in mm yr⁻¹
 
-* The MAT and MAP ranges are based on the model prediction uncertainties (RMSPE) of ±4.1 °C for MAT and ±317 mm yr⁻¹ for MAP.
+The MAT and MAP ranges are based on the model prediction uncertainties (RMSPE) of ±4.1 °C for MAT and ±317 mm yr⁻¹ for MAP.
 
 ## Method Summary
 
