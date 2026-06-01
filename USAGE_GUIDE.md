@@ -90,8 +90,9 @@ In a cell, add:
 Run the cell
 ### Step 6
 The prediction results will be saved to:
-results/output.csv
-
+```text
+XGB-PClim-Model-main/results/output.csv
+```
 If successful, you should see:
 Predictions saved to: results/output.csv
 Rows predicted: 41 / 41
@@ -115,8 +116,9 @@ Explanation:
 * `XGB-PClim_predict.py` runs the prediction script
 
 The prediction results will be saved to:
+```text
 XGB-PClim-Model-main/results/output.csv
-
+```
 # Running the R Version
 You can run the R version in two ways:
 
@@ -131,8 +133,9 @@ Click the **Run** button at the top of the script editor.
 The script will automatically:
 * read `data/input.csv`
 * save prediction results to:
+```text
 XGB-PClim-Model-main/results/output_R.csv 
-
+```
 If successful, you should see:
 ```text
 Predictions saved to: results/output_R.csv
@@ -160,8 +163,9 @@ If Rscript is not recognized, use:
 "C:\Program Files\R\R-4.4.1\bin\Rscript.exe" XGB-PClim_predict.R
 ```
 The script automatically saves predictions to:
-results/output_R.csv
-
+```text
+XGB-PClim-Model-main/results/output_R.csv
+```
 # 3. Prepare Your Own Data File
 
 Your CSV file must contain the following ten oxide columns:
