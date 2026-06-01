@@ -82,12 +82,14 @@ Rows with any missing oxide value are skipped during prediction.
 
 The script appends six columns to the input data:
 
-* **MAT\_Best** -- estimated best MAT in degrees Celsius
-* **MAT\_Min** -- estimated minimum MAT in degrees Celsius
-* **MAT\_Max** -- estimated maximum MAT in degrees Celsius
-* **MAP\_Best** -- estimated best MAP in mm/year
-* **MAP\_Min** -- estimated minimum MAP in mm/year
-* **MAP\_Max** -- estimated maximum MAP in mm/year
+* **MAT\_Best** -- best-estimated MAT prediction in °C
+* **MAT\_Min** -- lower bound of the MAT prediction range, calculated as MAT_Best minus the model uncertainty in °C
+* **MAT\_Max** -- upper bound of the MAT prediction range, calculated as MAT_Best minus the model uncertainty in °C
+* **MAP\_Best** -- best-estimated MAP prediction in mm yr⁻¹
+* **MAP\_Min** -- lower bound of the MAP prediction range, calculated as MAP_Best minus the model uncertainty in mm yr⁻¹
+* **MAP\_Max** -- lower bound of the MAP prediction range, calculated as MAP_Best minus the model uncertainty in mm yr⁻¹
+
+* The MAT and MAP ranges are based on the model prediction uncertainties (RMSPE) of ±4.1 °C for MAT and ±317 mm yr⁻¹ for MAP.
 
 ## Method Summary
 
