@@ -72,6 +72,45 @@ Example input file:
 ```text
 data/input.csv
 ```
+# Running the Python Version
+
+## Option 1 — Run in JupyterLab or Jupyter Notebook (Recommended for Beginners)
+### Step 1
+Open **JupyterLab**, or **Jupyter Notebook**
+### Step 2
+Navigate to the XGB-PClim-Model-Main folder and open Python folder
+### Step 3
+Create a new notebook in that folder
+### Step 4
+In a cell, add:
+
+%run XGB-PClim_predict.py
+### Step 5
+Run the cell
+### Step 6
+The prediction results will be saved to:
+results/output.csv
+
+If successful, you should see:
+Predictions saved to: results/output.csv
+Rows predicted: 41 / 41
+
+## Option 2 — Run from the Terminal or Command Prompt
+### Step 1
+Open XGB-PClim-Model-Main folder
+### Step 2
+Open a terminal or command prompt and run:
+```bash
+cd Python
+XGB-PClim_predict.py
+```
+Explanation:
+* `cd Python` moves into the `Python` folder
+* `XGB-PClim_predict.py` runs the prediction script
+
+The script saves predictions to:
+results/output.csv
+
 # Running the R Version
 You can run the R version in two ways:
 
@@ -117,44 +156,6 @@ If Rscript is not recongnized, use:
 The script automatically saves predictions to:
 results/output_R.csv
 
-# Running the Python Version
-## Option 1 — Run in JupyterLab or Jupyter Notebook (Recommended for Beginners)
-### Step 1
-Open **JupyterLab**, or **Jupyter Notebook**
-### Step 2
-Navigate to the XGB-PClim-Model-Main folder and open Python folder
-### Step 3
-Create a new notebook in that folder
-### Step 4
-In a cell, add:
-
-%run XGB-PClim_predict.py
-### Step 5
-Run the cell
-### Step 6
-The prediction results will be saved to:
-results/output.csv
-
-If successful, you should see:
-Predictions saved to: results/output.csv
-Rows predicted: 41 / 41
-
-## Option 2 — Run from the Terminal or Command Prompt
-### Step 1
-Open XGB-PClim-Model-Main folder
-### Step 2
-Open a terminal or command prompt and run:
-```bash
-cd Python
-XGB-PClim_predict.py
-```
-Explanation:
-* `cd Python` moves into the `Python` folder
-* `XGB-PClim_predict.py` runs the prediction script
-
-The script saves predictions to:
-results/output.csv
-
 # 3. Prepare Your Own Data File
 
 Your CSV file must contain the following ten oxide columns:
@@ -179,11 +180,14 @@ Example format:
 
 # 4. Running Predictions on Your Own Data
 ## Recommended Method for Beginners
-1. Open the provided `input.csv` file inside the `data` folder
-2. Replace the example data with your own samples
-3. Save the file
-4. Run the script using either the R or Python version
-5. Open `output.csv` (Python) or `output_R.csv` (R) stored in the `results` folder
+1. Open the provided input.csv file located in the data folder.
+2. Delete the example rows if desired and replace them with your own sample data.
+3. Keep the required oxide column names unchanged.
+4. Save the file.
+5. Run either the R or Python version of the script.
+6. Open output.csv (Python) or output_R.csv (R) in the results folder to view the predictions.
+
+Each row in the input file represents one sample and will receive its own MAT and MAP predictions.
 
 This is the easiest method because the scripts are already configured to automatically read `input.csv` and save results to the `results` folder.
 
@@ -205,15 +209,16 @@ The file will contain:
 * predicted temperature values
 * predicted precipitation values
 
-| Column                  | Unit    | Meaning                                           |
-| ----------------------- | ------- | -----------------------------------------------   |
-| MAT_Best                | °C      | Estimated best mean annual temperature (MAT)      |
-| MAT_Min                 | °C      | Estimated minimum mean annual temperature (MAT)   |
-| MAT_Max                 | °C      | Estimated maximum mean annual temperature (MAT)   |
-| MAP_Best                | mm/year | Estimated best mean annual precipitation (MAP)    |
-| MAP_Min                 | mm/year | Estimated minimum mean annual precipitation (MAP) |
-| MAP_Max                 | mm/year | Estimated maximum mean annual precipitation (MAP) |
+| Column                  | Unit    | Meaning                                                   |
+| ----------------------- | ------- | -----------------------------------------------           |
+| MAT_Best                | °C      | best-estimated mean annual temperature (MAT) prediction   |
+| MAT_Min                 | °C      | lower bound of the MAT prediction range                   |
+| MAT_Max                 | °C      | upper bound of the MAT prediction range                   |
+| MAP_Best                | mm yr⁻¹ | best-estimated mean annual precipitation (MAP) prediction |
+| MAP_Min                 | mm yr⁻¹ | lower bound of the MAP prediction range                   |
+| MAP_Max                 | mm yr⁻¹ | upper bound of the MAP prediction range                   |
 
+The MAT and MAP ranges are based on the model prediction uncertainties (RMSPE) of ±4.1 °C for MAT and ±317 mm yr⁻¹ for MAP.
 ### Notes
 
 * Blank values (`NA`) usually indicate missing oxide data
