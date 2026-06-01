@@ -94,9 +94,10 @@ The prediction results will be saved to:
 XGB-PClim-Model-main/results/output.csv
 ```
 If successful, you should see:
-Predictions saved to: results/output.csv
+```text
+Predictions saved to: results/output_R.csv
 Rows predicted: 41 / 41
-
+```
 ## Option 2 — Run from the Terminal or Command Prompt
 ### Step 1
 Open XGB-PClim-Model-Main folder
