@@ -103,14 +103,19 @@ Open XGB-PClim-Model-Main folder
 Open a terminal or command prompt and run:
 ```bash
 cd Python
-XGB-PClim_predict.py
+python XGB-PClim_predict.py
+``` 
+or
+```bash
+cd Python
+py -3 XGB-PClim_predict.py
 ```
 Explanation:
 * `cd Python` moves into the `Python` folder
 * `XGB-PClim_predict.py` runs the prediction script
 
-The script saves predictions to:
-results/output.csv
+The prediction results will be saved to:
+XGB-PClim-Model-main/results/output.csv
 
 # Running the R Version
 You can run the R version in two ways:
@@ -126,7 +131,7 @@ Click the **Run** button at the top of the script editor.
 The script will automatically:
 * read `data/input.csv`
 * save prediction results to:
-results/output_R.csv
+XGB-PClim-Model-main/results/output_R.csv 
 
 If successful, you should see:
 ```text
@@ -150,7 +155,7 @@ Explanation:
 * `cd R` moves into the `R` folder
 * `Rscript XGB-PClim_predict.R` runs the prediction script
 
-If Rscript is not recongnized, use:
+If Rscript is not recognized, use:
 ```
 "C:\Program Files\R\R-4.4.1\bin\Rscript.exe" XGB-PClim_predict.R
 ```
@@ -182,9 +187,12 @@ Example format:
 * The example data in `input.csv` are provided for demonstration purposes only and may be deleted or replaced with your own data.
 * Each row is treated as an independent sample and will receive its own MAT and MAP predictions.
 * There is no fixed limit on the number of samples that can be processed in a single run; the practical limit depends on available computer memory and processing resources.
+* The model was developed using modern soil geochemical datasets. Predictions for samples with oxide compositions substantially outside the range represented in the training data should be interpreted with caution.
 
 # 4. Running Predictions on Your Own Data
 ## Recommended Method for Beginners
+The example data included in `input.csv` are provided for demonstration purposes only. You may delete all example rows and replace them entirely with your own samples.
+
 1. Open `input.csv` in the `data` folder.
 2. Replace the example rows with your own sample data (or append additional samples).
 3. Ensure that the required oxide column names remain unchanged.
@@ -206,20 +214,16 @@ Rscript XGB-PClim_predict.R --data my_samples.csv --output my_predictions.csv
 ```
 # 5. Understanding the Output
 Open the output CSV file stored in the `results` folder using Excel or another spreadsheet program.
-
-The file will contain:
-* your original data
-* predicted temperature values
-* predicted precipitation values
+The output file contains the original input data together with the predicted MAT and MAP values and their associated uncertainty ranges.
 
 | Column                  | Unit    | Meaning                                                   |
 | ----------------------- | ------- | -----------------------------------------------           |
 | MAT_Best                | °C      | best-estimated mean annual temperature (MAT) prediction   |
-| MAT_Min                 | °C      | lower bound of the MAT prediction range                   |
-| MAT_Max                 | °C      | upper bound of the MAT prediction range                   |
+| MAT_Min                 | °C      | MAT_Best − 4.1 °C                                         |
+| MAT_Max                 | °C      | MAT_Best + 4.1 °C                                         |
 | MAP_Best                | mm yr⁻¹ | best-estimated mean annual precipitation (MAP) prediction |
-| MAP_Min                 | mm yr⁻¹ | lower bound of the MAP prediction range                   |
-| MAP_Max                 | mm yr⁻¹ | upper bound of the MAP prediction range                   |
+| MAP_Min                 | mm yr⁻¹ | MAP_Best − 317 mm yr⁻¹                                    |
+| MAP_Max                 | mm yr⁻¹ | MAP_Best + 317 mm yr⁻¹                                    |
 
 The MAT and MAP ranges are based on the model prediction uncertainties (RMSPE) of ±4.1 °C for MAT and ±317 mm yr⁻¹ for MAP.
 ### Notes
@@ -254,6 +258,8 @@ Run:
 ```r
 install.packages("xgboost")
 ```
+
 # Final Notes
-* Check your data carefully before running predictions
-* The Python and R versions should produce nearly identical results
+* Check your data carefully before running predictions.
+* The Python and R versions should produce nearly identical results.
+* For best results, ensure oxide concentrations are reported in wt % and that all required oxide columns are present.
