@@ -143,8 +143,8 @@ main <- function() {
   prec_pred <- pmax(prec_pred, 0)
   
   # --- Assemble output ---------------------------------------------------- 
-  temp_uncertainty <- 4.1  
-  prec_uncertainty <- 322    
+  temp_uncertainty <- 4.1  # °C
+  prec_uncertainty <- 322  # mm/year 
   temp_pred <- round(temp_pred, 1)
   prec_pred <- round(prec_pred, 0)
   
