@@ -141,7 +141,7 @@ def predict(
     temp = np.round(temp, 1)
 
     precip = np.round(precip, 0)
-
+    precip = precip.astype(int)
     # ======================================================
     # Calculate uncertainty ranges
     # ======================================================
