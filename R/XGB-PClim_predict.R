@@ -130,7 +130,7 @@ main <- function() {
   
   # --- Temperature prediction ---------------------------------------------
   X_temp <- as.matrix(data[mask, OXIDE_COLUMNS])
-  X_temp <- sweep(X_temp, 2, temp_mean, "-")
+  X_temp <- sweep(log1p(X_temp), 2, temp_mean, "-")
   X_temp <- sweep(X_temp, 2, temp_scale, "/")
   temp_pred <- predict(temp_model, X_temp)
   
