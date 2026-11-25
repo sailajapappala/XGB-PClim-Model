@@ -266,9 +266,8 @@ Applying XGB-PClim to these compositions is not recommended.
 
 Rows are numbered as they appear in your input file, counting the header as row 1, so `row 8` is the 7th sample. The check reads the oxide columns only and does not need a sample name column.
 
-Those rows still receive numbers, because the script does not decide for you. Do not report them as paleoclimate estimates.
-
-Staying inside the oxide ranges is necessary but not sufficient. Before applying XGB-PClim to a paleosol, check it against the full XGB-PClim application criteria in table S3 of the supplementary information, which also covers parent material, degree of pedogenic development, burial alteration and the climate range the model can resolve.
+Those rows still receive numbers, but do not report them as paleoclimate estimates.
+Before applying XGB-PClim to a paleosol, check it against the full XGB-PClim application criteria in table S3 of the supplementary information. 
 
 ### Notes
 
