@@ -1,6 +1,20 @@
-numpy>=1.24
-pandas>=2.0
-scikit-learn==1.5.1
-xgboost>=2.0
-scipy>=1.11
-joblib>=1.3
+# XGB-PClim dependencies, pinned to the versions the released models
+# were trained with.
+#
+# The saved models are pickled scikit-learn objects, so these versions
+# are load-bearing. scikit-learn is pinned exactly, because a pickle
+# written by one version is not guaranteed to load under another, and
+# the arrays inside were written by NumPy 2.x, which NumPy 1.x cannot
+# read. The remaining packages are held at or above the training
+# version and capped below the next major release.
+#
+# Python 3.12 or newer. SciPy 1.18 requires 3.12, and scikit-learn
+# 1.9.0 and NumPy 2.4 require 3.11, so 3.11 and earlier cannot
+# satisfy this file. The models were trained on Python 3.12.7.
+
+numpy>=2.4,<3.0
+pandas>=2.3,<3.0
+scikit-learn==1.9.0
+scipy>=1.18,<2.0
+xgboost>=2.1.4,<3.0
+joblib>=1.3,<2.0

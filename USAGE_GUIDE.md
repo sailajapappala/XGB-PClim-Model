@@ -19,9 +19,11 @@ Example folder structure:
 XGB-PClim-Model-main/
 │
 ├── Python/
+│   ├── data/
+│   └── models/
 ├── R/
-├── data/
-├── models/
+│   ├── data/
+│   └── models/
 └── results/
 ```
 ### Step 2 — Open a Terminal Inside the Project Folder
@@ -49,7 +51,7 @@ py -3 -m pip install -r requirements.txt
 This installs all required Python packages automatically.
 
 ### Requirements
-* Python 3.9 or newer
+* Python 3.12 or newer. The models were trained on Python 3.12.7, and the pinned package versions are not available for Python 3.11 or earlier.
 
 ## R Users
 The R version can be run using:
@@ -95,8 +97,8 @@ XGB-PClim-Model-main/results/output.csv
 ```
 If successful, you should see:
 ```text
-Predictions saved to: results/output_R.csv
-Rows predicted: 41 / 41
+Predictions saved to: results/output.csv
+Rows predicted: 43 / 43
 ```
 ## Option 2 — Run from the Terminal or Command Prompt
 ### Step 1
@@ -140,7 +142,7 @@ XGB-PClim-Model-main/results/output_R.csv
 If successful, you should see:
 ```text
 Predictions saved to: results/output_R.csv
-Rows predicted: 41 / 41
+Rows predicted: 43 / 43
 ```
 This means the model ran successfully.
 
@@ -192,7 +194,7 @@ Example format:
 * The example data in `input.csv` are provided for demonstration purposes only and may be deleted or replaced with your own data.
 * Each row is treated as an independent sample and will receive its own MAT and MAP predictions.
 * There is no fixed limit on the number of samples that can be processed in a single run; the practical limit depends on available computer memory and processing resources.
-* The model was developed using modern soil geochemical datasets. Predictions for samples with oxide compositions substantially outside the range represented in the training data should be interpreted with caution.
+* **Applying XGB-PClim to samples outside the calibration range is not recommended.** See section 5 below for the ranges and for what the scripts do when a sample falls outside them.
 
 # 4. Running Predictions on Your Own Data
 ## Recommended Method for Beginners
@@ -224,13 +226,50 @@ The output file contains the original input data together with the predicted MAT
 | Column                  | Unit    | Meaning                                                   |
 | ----------------------- | ------- | -----------------------------------------------           |
 | MAT_Best                | °C      | best-estimated mean annual temperature (MAT) prediction   |
-| MAT_Min                 | °C      | MAT_Best − 4.1 °C                                         |
-| MAT_Max                 | °C      | MAT_Best + 4.1 °C                                         |
+| MAT_Min                 | °C      | MAT_Best − 4.0 °C                                         |
+| MAT_Max                 | °C      | MAT_Best + 4.0 °C                                         |
 | MAP_Best                | mm yr⁻¹ | best-estimated mean annual precipitation (MAP) prediction |
-| MAP_Min                 | mm yr⁻¹ | MAP_Best − 317 mm yr⁻¹                                    |
-| MAP_Max                 | mm yr⁻¹ | MAP_Best + 317 mm yr⁻¹                                    |
+| MAP_Min                 | mm yr⁻¹ | MAP_Best − 327 mm yr⁻¹                                    |
+| MAP_Max                 | mm yr⁻¹ | MAP_Best + 327 mm yr⁻¹                                    |
+| Outside_calibration     | --      | blank if the sample is inside the calibration range, otherwise the oxides that fall outside it are listed|
 
-The MAT and MAP ranges are based on the model prediction uncertainties (RMSPE) of ±4.1 °C for MAT and ±317 mm yr⁻¹ for MAP.
+The MAT and MAP ranges are based on the model prediction uncertainties (RMSPE) of ±4.0 °C for MAT and ±327 mm yr⁻¹ for MAP.
+
+## Check the Calibration Range Before You Use the Numbers
+
+**XGB-PClim should not be applied to paleosols whose composition falls outside the calibration range.** The model is calibrated on 1,090 modern soil pedons. Gradient-boosted trees do not extrapolate, so beyond the outermost split the model returns a constant value. A sample outside these ranges receives a boundary value rather than a prediction, and the reported uncertainty of ±4.0 °C and ±327 mm yr⁻¹ does not apply to it.
+
+| Oxide | Minimum (wt %) | Maximum (wt %) |
+| ----- | -------------- | -------------- |
+| CaO   | 0.00           | 38.86          |
+| MgO   | 0.01           | 19.22          |
+| Na2O  | 0.00           | 16.35          |
+| K2O   | 0.00           | 4.42           |
+| Al2O3 | 0.77           | 27.99          |
+| Fe2O3 | 0.21           | 45.82          |
+| SiO2  | 3.88           | 90.36          |
+| MnO   | 0.00           | 1.00           |
+| TiO2  | 0.04           | 12.53          |
+| P2O5  | 0.00           | 18.06          |
+
+Both scripts check this automatically. Any sample that falls outside is named in the console output and flagged in the **Outside_calibration** column, like this:
+
+```text
+WARNING: 5 of 43 samples fall outside the XGB-PClim calibration domain.
+  row 8: Al2O3
+  row 17: Al2O3
+  row 23: Al2O3
+  row 43: K2O
+  row 44: K2O
+Applying XGB-PClim to these compositions is not recommended.
+```
+
+Rows are numbered as they appear in your input file, counting the header as row 1, so `row 8` is the 7th sample. The check reads the oxide columns only and does not need a sample name column.
+
+Those rows still receive numbers, because the script does not decide for you. Do not report them as paleoclimate estimates.
+
+Staying inside the oxide ranges is necessary but not sufficient. Before applying XGB-PClim to a paleosol, check it against the full XGB-PClim application criteria in table S3 of the supplementary information, which also covers parent material, degree of pedogenic development, burial alteration and the climate range the model can resolve.
+
 ### Notes
 
 * Blank values (`NA`) usually indicate missing oxide data
@@ -266,5 +305,6 @@ install.packages("xgboost")
 
 # Final Notes
 * Check your data carefully before running predictions.
+* Check every sample against the calibration range and the application criteria before reporting a prediction.
 * The Python and R versions should produce nearly identical results.
 * For best results, ensure oxide concentrations are reported in wt % and that all required oxide columns are present.
