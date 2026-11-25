@@ -115,7 +115,7 @@ Both scripts check every sample against the ranges below and report any that fal
 |TiO2|0.04|12.53|
 |P2O5|0.00|18.06|
 
-Before applying XGB-PClim to a paleosol, check it against the full XGB-PClim application criteria in table S3 of the supplementary information, which also covers parent material, degree of pedogenic development, burial alteration and the climate range the model can resolve.
+Before applying XGB-PClim to a paleosol, check it against the full XGB-PClim application criteria in table S3 of the supplementary information. 
 
 ## Method Summary
 
